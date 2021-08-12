@@ -1,0 +1,205 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author leninrkb
+ */
+public class ContenedorDAO implements Crud {
+
+    PreparedStatement ps;
+    ResultSet rs;
+    Conexion con = new Conexion();
+    Connection conn;
+
+    //carga los datos dependiendo de la palabra ingresada, si no se ingresa nada carga todo. 
+    //servicio para cargar y buscar
+    @Override
+    public List getDatos(String producto) {
+        List<Contenedor> datos = new ArrayList<>();
+        String sql = "";
+
+        if (producto == null || producto == " ") {
+            sql = "select * from maestrobodega m, ciudad c, producto p, bodega b "
+                    + "where b.id_bod=m.id_bod_mae "
+                    + "and p.id_pro=m.id_pro_mae "
+                    + "and c.id_ciu=b.id_ciu_bod ";
+
+        } else {
+            sql = "select * from maestrobodega m, ciudad c, producto p, bodega b "
+                    + "where b.id_bod=m.id_bod_mae "
+                    + "and p.id_pro=m.id_pro_mae "
+                    + "and c.id_ciu=b.id_ciu_bod "
+                    + "and nom_pro like '%" + producto + "%'";
+        }
+
+        try {
+
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Contenedor c = new Contenedor();
+
+                c.setBodega(rs.getString("nom_bod"));
+                c.setCiudad(rs.getString("nom_ciu"));
+                c.setPrecio(rs.getString("pre_pro"));
+                c.setProducto(rs.getString("nom_pro"));
+                c.setStock(rs.getString("stock_mae"));
+                c.setDisp(rs.getString("disp_mae"));
+
+                datos.add(c);
+            }
+
+        } catch (Exception e) {
+        }
+
+        return datos;
+    }
+
+    //valida el ingreso
+    @Override
+    public Boolean login(String usuario, String contrasenia) {
+        String sql = "select * from usuario "
+                + "where nom_usu='" + usuario + "' "
+                + "and pass_usu='" + contrasenia + "'";
+
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+
+        return false;
+    }
+
+    //recupera el tipo de usuario
+    @Override
+    public String tipoUsuario(String usuario) {
+        String tipo = null;
+        String sql = "select tip_usu from usuario "
+                + "where nom_usu='" + usuario + "'";
+
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return tipo = rs.getString("tip_usu");
+            }
+        } catch (Exception e) {
+        }
+
+        return tipo;
+    }
+
+    //recuepra todos los productos
+    @Override
+    public List getProductos() {
+        List<Producto> datos = new ArrayList<>();
+        String sql = "select * from producto";
+
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Producto p = new Producto();
+                p.setId(rs.getString("id_pro"));
+                p.setNombre(rs.getString("nom_pro"));
+                p.setPrecio(rs.getString("pre_pro"));
+
+                datos.add(p);
+            }
+        } catch (Exception e) {
+        }
+
+        return datos;
+    }
+
+    //recupera la ciudad del usuario
+    @Override
+    public String ciudadUsuario(String usuario) {
+        String sql = "select nom_ciu from usuario u, ciudad c "
+                + "where u.id_ciu_usu=c.id_ciu "
+                + "and u.nom_usu='" + usuario + "'";
+        String ciudad = "";
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return ciudad = rs.getString("nom_ciu");
+            }
+        } catch (Exception e) {
+        }
+
+        return ciudad;
+    }
+
+    @Override
+    public List getDatosXCiudad(String ciudad, String producto) {
+        List<Contenedor> datos = new ArrayList<>();
+        String sql;
+
+        if (producto == null || producto == "") {
+            sql = "select * from maestrobodega m, ciudad c, producto p, bodega b "
+                    + "where b.id_bod=m.id_bod_mae "
+                    + "and p.id_pro=m.id_pro_mae "
+                    + "and c.id_ciu=b.id_ciu_bod "
+                    + "and c.nom_ciu='" + ciudad + "'";
+                    
+        } else {
+            sql = "select * from maestrobodega m, ciudad c, producto p, bodega b "
+                    + "where b.id_bod=m.id_bod_mae "
+                    + "and p.id_pro=m.id_pro_mae "
+                    + "and c.id_ciu=b.id_ciu_bod "
+                    + "and c.nom_ciu='" + ciudad + "' "
+                    + "and nom_pro like '%" + producto + "%'";
+        }
+
+        try {
+
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Contenedor c = new Contenedor();
+
+                c.setBodega(rs.getString("nom_bod"));
+                c.setCiudad(rs.getString("nom_ciu"));
+                c.setPrecio(rs.getString("pre_pro"));
+                c.setProducto(rs.getString("nom_pro"));
+                c.setStock(rs.getString("stock_mae"));
+                c.setDisp(rs.getString("disp_mae"));
+
+                datos.add(c);
+            }
+
+        } catch (Exception e) {
+        }
+
+        return datos;
+    }
+
+}
