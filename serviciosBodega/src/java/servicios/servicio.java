@@ -9,6 +9,7 @@ import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import modelo.Bodega;
 import modelo.Contenedor;
 import modelo.ContenedorDAO;
 import modelo.Producto;
@@ -78,5 +79,18 @@ public class servicio {
     public List<Contenedor> getDatosXCiudad(@WebParam(name = "ciudad") String ciudad, @WebParam(name = "producto") String producto) {
         //TODO write your implementation code here:
         return c.getDatosXCiudad(ciudad, producto);
+    }
+    
+    @WebMethod(operationName = "bodegasCiudad")
+    public List<Bodega> bodegasCiudad(@WebParam(name = "ciudad") String ciudad) {
+        //TODO write your implementation code here:
+        return c.bodegasCiudad(ciudad);
+    }
+    
+    
+    @WebMethod(operationName = "verificarCompra")
+    public Boolean verificarCompra(@WebParam(name = "productoID") String productoID, @WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "cantidad") Integer cantidad ) {
+        //TODO write your implementation code here:
+        return c.verificarCompra(productoID, bodegaID, cantidad);
     }
 }

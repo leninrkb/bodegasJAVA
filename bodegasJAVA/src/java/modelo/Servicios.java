@@ -47,6 +47,18 @@ public class Servicios {
         return port.getDatosXCiudad(ciudad, producto);
     }
 
+    public java.util.List<servicios.Bodega> bodegasCiudad(java.lang.String ciudad) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.bodegasCiudad(ciudad);
+    }
+
+    public Boolean verificarCompra(java.lang.String productoID, java.lang.String bodegaID, java.lang.Integer cantidad) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.verificarCompra(productoID, bodegaID, cantidad);
+    }
+
     
     
     

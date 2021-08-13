@@ -58,6 +58,11 @@ public class ContenedorDAO implements Crud {
                 c.setProducto(rs.getString("nom_pro"));
                 c.setStock(rs.getString("stock_mae"));
                 c.setDisp(rs.getString("disp_mae"));
+                
+                c.setBodegaID(rs.getString("id_pro"));
+                c.setProductoID(rs.getString("id_pro"));
+                c.setCiudadID(rs.getString("id_ciu"));
+                
 
                 datos.add(c);
             }
@@ -156,6 +161,8 @@ public class ContenedorDAO implements Crud {
         return ciudad;
     }
 
+    
+    //busca los datos del maestro por ciudad y producto
     @Override
     public List getDatosXCiudad(String ciudad, String producto) {
         List<Contenedor> datos = new ArrayList<>();
@@ -192,6 +199,10 @@ public class ContenedorDAO implements Crud {
                 c.setProducto(rs.getString("nom_pro"));
                 c.setStock(rs.getString("stock_mae"));
                 c.setDisp(rs.getString("disp_mae"));
+                
+                c.setBodegaID(rs.getString("id_pro"));
+                c.setProductoID(rs.getString("id_pro"));
+                c.setCiudadID(rs.getString("id_ciu"));
 
                 datos.add(c);
             }
@@ -199,6 +210,62 @@ public class ContenedorDAO implements Crud {
         } catch (Exception e) {
         }
 
+        return datos;
+    }
+
+    @Override
+    public Boolean verificarCompra(String productoID, String bodegaID, Integer cantidad) {
+        String sql = "select * from maestrobodega "
+                + "where id_pro_mae='"+productoID+"' "
+                + "and id_bod_mae='"+bodegaID+"' ";
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                Integer stock = Integer.parseInt(rs.getString("stock_mae"));
+                if (stock >= cantidad) {
+                    return true;
+                }
+            }
+            
+        } catch (Exception e) {
+        }
+        
+        
+        
+        return false;
+    }
+
+    @Override
+    public List bodegasCiudad(String ciudad) {
+        List<Bodega> datos = new ArrayList<>();
+        String sql = "select * from bodega b, ciudad c "
+                + "where c.nom_ciu='"+ciudad+"' "
+                + "and b.id_ciu_bod=c.id_ciu";
+       
+        
+        try {
+
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Bodega b = new Bodega();
+                
+                b.setBodegaID(rs.getString("id_bod"));
+                b.setBodega(rs.getString("nom_bod"));
+                b.setBodegaRUC(rs.getString("ruc_emp_bod"));
+                b.setCiudad(rs.getString("id_ciu_bod"));
+                
+                datos.add(b);
+            }
+
+        } catch (Exception e) {
+        }
+        
         return datos;
     }
 

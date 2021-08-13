@@ -1,4 +1,5 @@
 
+<%@page import="servicios.Bodega"%>
 <%@page import="servicios.Producto"%>
 <%@page import="servicios.Contenedor"%>
 <%@page import="java.util.List"%>
@@ -25,14 +26,14 @@
             <center>
                 sesion cliente iniciada como: 
                 <%
-                    String usuario = (String)session2.getAttribute("session_usuario");
+                    String usuario = (String) session2.getAttribute("session_usuario");
                 %>
                 <%=usuario%>
             </center>
 
             <div>
                 <form id="buscar">
-                    <input type="text" name="producto" placeholder="ej:galletas">
+                    <input type="text" name="producto_buscar" placeholder="ej:galletas">
                     <input type="submit" name="accion" value="buscar">
                 </form>
             </div>
@@ -46,11 +47,12 @@
                     <th>Ciudad</th>
                     <th>Producto</th>
                     <th>Precio</th>
+                    <th>Stock</th>
                     </thead>
                     <tbody>
                         <%
                             Servicios s = new Servicios();
-                            String producto = request.getParameter("producto");
+                            String producto = request.getParameter("producto_buscar");
                             String ciudad = s.ciudadUsuario(usuario);
 
                             List<Contenedor> datos = s.getDatosXCiudad(ciudad, producto);
@@ -61,6 +63,7 @@
                             <td><%=c.getCiudad()%></td>
                             <td><%=c.getProducto()%></td>
                             <td><%=c.getPrecio()%></td>
+                            <td><%=c.getStock()%></td>
                         </tr>
                         <% }%>
                     </tbody>
@@ -70,16 +73,33 @@
 
             <div id="servicio">
                 <form>
-                    Producto:
-                    <select name="producto">
+                    Bodega:
+                    <select name="bodegaID_compra">
                         <%
-                            for (Contenedor c : datos) {
+                            List<Bodega> bodega = s.bodegasCiudad(ciudad);
+                            for (Bodega b : bodega) {
                         %>
-                        <option><%=c.getProducto()%></option>
+                        <option value=""><%=b.getBodega()%></option>
                         <%                            }
                         %>
                     </select>
                     <br><br>
+
+
+                    Producto:
+                    <select name="productoID_compra">
+                        <%
+                            for (Contenedor c : datos) {
+                        %>
+                        <option value=""><%=c.getProducto()%></option>
+                        <%                            }
+                        %>
+                    </select>
+                    <br><br>
+
+                    Cantidad:
+                    <input type="number" name="cantidad_compra" required="" min="0" value="0">
+
 
                     <input type="submit" name="accion" value="comprar">
                 </form>

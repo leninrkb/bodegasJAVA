@@ -12,10 +12,12 @@ import java.util.List;
  * @author leninrkb
  */
 public interface Crud {
-    public List getDatos(String producto);
-    public Boolean login(String usuario, String contrasenia);
-    public String tipoUsuario(String usuario); 
-    public List getProductos();
-    public String ciudadUsuario(String usuario);
-    public List getDatosXCiudad(String ciudad, String producto);
+    public List getDatos(String producto);//recupera todos los datos del maestro buscando por nombre de producto
+    public Boolean login(String usuario, String contrasenia); //valida el login
+    public String tipoUsuario(String usuario); //retorna el tipo de usuario
+    public List getProductos();//retorna todos los productos
+    public String ciudadUsuario(String usuario);//retorna la ciudad del usuario
+    public List getDatosXCiudad(String ciudad, String producto);//retorna los datos del maestro segun la ciudad
+    public Boolean verificarCompra(String productoID, String bodegaID, Integer cantidad);//verifica que exista suficiente stock
+    public List bodegasCiudad(String ciudad); //recupera las bodegas que existen en una ciudad
 }
