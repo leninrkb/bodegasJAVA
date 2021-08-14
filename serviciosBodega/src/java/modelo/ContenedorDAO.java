@@ -21,6 +21,9 @@ public class ContenedorDAO implements Crud {
     ResultSet rs;
     Conexion con = new Conexion();
     Connection conn;
+    Integer res;
+    String msj;
+    Producto pro = new Producto();
 
     //carga los datos dependiendo de la palabra ingresada, si no se ingresa nada carga todo. 
     //servicio para cargar y buscar
@@ -331,6 +334,65 @@ public class ContenedorDAO implements Crud {
         }
 
         return false;
+
+    @Override
+    public String addproducto(String id, String nombre, String precio) {
+        String sql = "Insert into producto(id_pro, nom_pro, pre_pro) values(?,?,?)";
+
+        try {
+            conn = con.getConexion();
+            ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setString(1, id);
+            ps.setString(2, nombre);
+            ps.setString(3, precio);
+            
+            res = ps.executeUpdate();
+
+            if (res == 1) {
+                msj = "Se Ingresó El Producto";
+            } else {
+                msj = "No Se Ingresó El Producto";
+            }
+        } catch (Exception e) {
+        }
+
+        return msj;
+    }
+
+    @Override
+    public String editproducto(String id, String nombre, String precio) {
+        String sql = "Update producto set nom_pro=?,pre_pro=? where id_pro=" + id;
+
+        try {
+            conn = con.getConexion();
+            ps = (PreparedStatement) conn.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ps.setString(2, precio);
+            res = ps.executeUpdate();
+
+            if (res == 1) {
+                msj = "Se Modificó El Producto";
+            } else {
+                msj = "No Se Modificó El Producto";
+            }
+        } catch (Exception e) {
+        }
+
+        return msj;
+    }
+
+    @Override
+    public Producto eliminarproducto(String id) {
+        String sql = "Delete from producto where id_pro=" + id;
+
+        try {
+            conn = con.getConexion();
+            ps = (PreparedStatement) conn.prepareStatement(sql);
+            res = ps.executeUpdate();
+
+        } catch (Exception e) {
+        }
+        return pro;
     }
 
 }

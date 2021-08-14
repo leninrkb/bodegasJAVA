@@ -34,6 +34,8 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     String valor = "";
+    String add = "add.jsp";
+    String edit = "edit.jsp";
     Servicios s = new Servicios();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -72,6 +74,19 @@ public class Controlador extends HttpServlet {
                 session.invalidate();
                 valor = "index.jsp";
                     break;
+                    
+            case "comprar":
+                String producto = request.getParameter("productoID_compra");
+                String ciudad = s.ciudadUsuario((String) session.getAttribute("session_usuario"));
+                //s.comprar(producto);
+                break;
+            case "addproducto":
+                valor = add;
+                
+            case "editproducto":
+                 valor = edit;
+            case "eliminarproducto":
+                valor = add;
 
             default:
                 break;
