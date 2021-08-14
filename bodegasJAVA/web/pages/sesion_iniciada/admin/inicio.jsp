@@ -137,15 +137,15 @@
                     </section>
                 </div>
                 <%
-                    }
-
+                    }else{
                 %>
                 <div id="mal">
                     <section>
                         <jsp:include page="../../../include/mal.jsp" flush="true" />
                     </section>
                 </div>
-                <%    }
+                <%     
+                    } }
                 %>
             </div>
         </div>
