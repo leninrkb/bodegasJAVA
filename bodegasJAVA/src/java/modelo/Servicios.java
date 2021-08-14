@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modelo;
+import servicios.Producto;
 
 /**
  *
@@ -57,6 +58,24 @@ public class Servicios {
         servicios.Servicio_Service service = new servicios.Servicio_Service();
         servicios.Servicio port = service.getServicioPort();
         return port.verificarCompra(productoID, bodegaID, cantidad);
+    }
+    
+    public static String addproducto(java.lang.String id, java.lang.String nombre, java.lang.String precio) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.addproducto(id, nombre, precio);
+    }
+
+    public static String editproducto(java.lang.String id, java.lang.String nombre, java.lang.String precio) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.editproducto(id, nombre, precio);
+    }
+
+    public Producto eliminarproducto(java.lang.String id) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.eliminarproducto(id);
     }
 
     
