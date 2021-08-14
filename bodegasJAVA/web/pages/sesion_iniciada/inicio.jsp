@@ -79,7 +79,7 @@
                             List<Bodega> bodega = s.bodegasCiudad(ciudad);
                             for (Bodega b : bodega) {
                         %>
-                        <option value=""><%=b.getBodega()%></option>
+                        <option value="<%=b.getBodegaID()%>"><%=b.getBodega()%></option>
                         <%                            }
                         %>
                     </select>
@@ -91,7 +91,8 @@
                         <%
                             for (Contenedor c : datos) {
                         %>
-                        <option value=""><%=c.getProducto()%></option>
+
+                        <option value="<%=c.getProductoID()%>"><%=c.getProducto()%></option>
                         <%                            }
                         %>
                     </select>
@@ -99,10 +100,36 @@
 
                     Cantidad:
                     <input type="number" name="cantidad_compra" required="" min="0" value="0">
-
-
                     <input type="submit" name="accion" value="comprar">
+
                 </form>
+
+                <%
+                    String accion = request.getParameter("accion");
+                    if (accion.equals("comprar")) {
+
+                        String productoID = request.getParameter("productoID_compra");
+                        String bodegaID = request.getParameter("bodegaID_compra");
+                        Integer cantidad = Integer.parseInt(request.getParameter("cantidad_compra"));
+
+                        Boolean b = s.verificarCompra(bodegaID, productoID, cantidad);
+                        if (b) {
+
+                %>
+                <br>
+                <div id="bien">
+                    <jsp:include page="../../include/puedeComprar.jsp" flush="true" />
+                </div>
+                <%                } else {
+                %>
+                <br>
+                <div id="alerta">
+                    <jsp:include page="../../include/noPuedeComprar.jsp" flush="true" />
+                </div>
+                <%
+                        }
+                    }
+                %>
             </div>
 
 

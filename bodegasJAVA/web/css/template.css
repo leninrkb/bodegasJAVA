@@ -78,6 +78,20 @@ body{
     margin: 20px;
 }
 
+#servicio #alerta{
+    background-color: #fdff94;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+
+#servicio #bien{
+    background-color: #c9ff94;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+
 #nav{
     margin: 5px;
     background-color: #8375f0;

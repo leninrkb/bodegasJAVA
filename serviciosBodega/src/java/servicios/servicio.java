@@ -28,8 +28,9 @@ public class servicio {
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
     }
-    
+
     ContenedorDAO c = new ContenedorDAO();
+
     @WebMethod(operationName = "getDatos")
     public List<Contenedor> getDatos(@WebParam(name = "producto") String producto) {
 
@@ -80,17 +81,16 @@ public class servicio {
         //TODO write your implementation code here:
         return c.getDatosXCiudad(ciudad, producto);
     }
-    
+
     @WebMethod(operationName = "bodegasCiudad")
     public List<Bodega> bodegasCiudad(@WebParam(name = "ciudad") String ciudad) {
         //TODO write your implementation code here:
         return c.bodegasCiudad(ciudad);
     }
-    
-    
+
     @WebMethod(operationName = "verificarCompra")
-    public Boolean verificarCompra(@WebParam(name = "productoID") String productoID, @WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "cantidad") Integer cantidad ) {
+    public Boolean verificarCompra(@WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "productoID") String productoID, @WebParam(name = "cantidad") Integer cantidad) {
         //TODO write your implementation code here:
-        return c.verificarCompra(productoID, bodegaID, cantidad);
+        return c.verificarCompra(bodegaID, productoID, cantidad);
     }
 }

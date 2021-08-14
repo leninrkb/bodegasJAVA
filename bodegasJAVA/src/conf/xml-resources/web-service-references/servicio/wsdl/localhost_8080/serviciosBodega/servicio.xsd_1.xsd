@@ -48,39 +48,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="bodegasCiudad">
-<xs:sequence>
-<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="bodegasCiudadResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:bodega" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="bodega">
-<xs:sequence>
-<xs:element name="bodega" type="xs:string" minOccurs="0"/>
-<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
-<xs:element name="bodegaRUC" type="xs:string" minOccurs="0"/>
-<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="hello">
-<xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="helloResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="getDatosXCiudad">
 <xs:sequence>
 <xs:element name="ciudad" type="xs:string" minOccurs="0"/>
@@ -108,15 +75,36 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getDatos">
+<xs:complexType name="hello">
 <xs:sequence>
-<xs:element name="producto" type="xs:string" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getDatosResponse">
+<xs:complexType name="helloResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bodegasCiudad">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bodegasCiudadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:bodega" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="bodega">
+<xs:sequence>
+<xs:element name="bodega" type="xs:string" minOccurs="0"/>
+<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
+<xs:element name="bodegaRUC" type="xs:string" minOccurs="0"/>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -129,6 +117,18 @@
 <xs:complexType name="ciudadUsuarioResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDatos">
+<xs:sequence>
+<xs:element name="producto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDatosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -147,8 +147,8 @@
 
 <xs:complexType name="verificarCompra">
 <xs:sequence>
-<xs:element name="productoID" type="xs:string" minOccurs="0"/>
 <xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
+<xs:element name="productoID" type="xs:string" minOccurs="0"/>
 <xs:element name="cantidad" type="xs:int" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
