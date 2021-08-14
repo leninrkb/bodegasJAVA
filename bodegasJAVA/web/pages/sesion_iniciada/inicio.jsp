@@ -35,7 +35,13 @@
                 <form id="buscar">
                     <input type="text" name="producto_buscar" placeholder="ej:galletas">
                     <input type="submit" name="accion" value="buscar">
+                    <br><br>
+                    <div>
+                        <input type="submit" name="accion" value="Refrescar Datos">
+                    </div>
+
                 </form>
+
             </div>
 
             <div id="tabla">
@@ -112,15 +118,16 @@
                         String bodegaID = request.getParameter("bodegaID_compra");
                         Integer cantidad = Integer.parseInt(request.getParameter("cantidad_compra"));
 
-                        Boolean b = s.verificarCompra(bodegaID, productoID, cantidad);
-                        if (b) {
+                        if (s.verificarCompra(bodegaID, productoID, cantidad)) {
+                            if (s.comprar(bodegaID, productoID, cantidad)) {
 
                 %>
                 <br>
                 <div id="bien">
-                    <jsp:include page="../../include/puedeComprar.jsp" flush="true" />
+                    <jsp:include page="../../include/puedeComprar.jsp" flush="true" /><br>
                 </div>
-                <%                } else {
+                <%                }
+                } else {
                 %>
                 <br>
                 <div id="alerta">

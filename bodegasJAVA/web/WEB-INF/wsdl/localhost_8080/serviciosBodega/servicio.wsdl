@@ -10,6 +10,12 @@
 <message name="loginResponse">
 <part name="parameters" element="tns:loginResponse"/>
 </message>
+<message name="comprar">
+<part name="parameters" element="tns:comprar"/>
+</message>
+<message name="comprarResponse">
+<part name="parameters" element="tns:comprarResponse"/>
+</message>
 <message name="ciudadUsuario">
 <part name="parameters" element="tns:ciudadUsuario"/>
 </message>
@@ -63,6 +69,10 @@
 <input wsam:Action="http://servicios/servicio/loginRequest" message="tns:login"/>
 <output wsam:Action="http://servicios/servicio/loginResponse" message="tns:loginResponse"/>
 </operation>
+<operation name="comprar">
+<input wsam:Action="http://servicios/servicio/comprarRequest" message="tns:comprar"/>
+<output wsam:Action="http://servicios/servicio/comprarResponse" message="tns:comprarResponse"/>
+</operation>
 <operation name="ciudadUsuario">
 <input wsam:Action="http://servicios/servicio/ciudadUsuarioRequest" message="tns:ciudadUsuario"/>
 <output wsam:Action="http://servicios/servicio/ciudadUsuarioResponse" message="tns:ciudadUsuarioResponse"/>
@@ -99,6 +109,15 @@
 <binding name="servicioPortBinding" type="tns:servicio">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
 <operation name="login">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="comprar">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

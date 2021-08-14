@@ -72,12 +72,6 @@ public class Controlador extends HttpServlet {
                 session.invalidate();
                 valor = "index.jsp";
                     break;
-                    
-            case "comprar":
-                String producto = request.getParameter("productoID_compra");
-                String ciudad = s.ciudadUsuario((String) session.getAttribute("session_usuario"));
-                //s.comprar(producto);
-                break;
 
             default:
                 break;

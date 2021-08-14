@@ -93,4 +93,10 @@ public class servicio {
         //TODO write your implementation code here:
         return c.verificarCompra(bodegaID, productoID, cantidad);
     }
+    
+    @WebMethod(operationName = "comprar")
+    public Boolean comprar(@WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "productoID") String productoID, @WebParam(name = "cantidad") Integer cantidad) {
+        //TODO write your implementation code here:
+        return c.comprar(bodegaID, productoID, cantidad);
+    }
 }

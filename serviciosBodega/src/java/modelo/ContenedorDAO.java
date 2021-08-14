@@ -224,7 +224,7 @@ public class ContenedorDAO implements Crud {
             if (rs.next()) {
                 String sn = rs.getString("disp_mae");
                 if (sn.equals("s")) {
-                 
+
                     Integer stock = Integer.parseInt(rs.getString("stock_mae"));
                     if (stock >= cantidad) {
                         return true;
@@ -267,6 +267,70 @@ public class ContenedorDAO implements Crud {
         }
 
         return datos;
+    }
+
+    @Override
+    public Boolean comprar(String bodegaID, String productoID, Integer cantidad) {
+        String sql = "update maestrobodega "
+                + "set stock_mae=stock_mae-" + cantidad + " "
+                + "where id_bod_mae='" + bodegaID + "' "
+                + "and id_pro_mae='" + productoID + "' ";
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            Integer i = ps.executeUpdate();
+
+            if (comprobarStock(bodegaID, productoID)) {
+                if (updateDisponibilidad(bodegaID, productoID)) {
+                    return true;
+                }
+            }
+
+            return true;
+
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    private Boolean comprobarStock(String bodegaID, String productoID) {
+        String sql = "select * from maestrobodega "
+                + "where id_pro_mae='" + productoID + "' "
+                + "and id_bod_mae='" + bodegaID + "' ";
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                Integer stock = Integer.parseInt(rs.getString("stock_mae"));
+                if (stock == 0) {
+                    return true;
+                }
+            }
+
+        } catch (Exception e) {
+        }
+        return false;
+    }
+
+    private Boolean updateDisponibilidad(String bodegaID, String productoID) {
+        String sql = "update maestrobodega "
+                + "set disp_mae= 'n' "
+                + "where id_bod_mae='" + bodegaID + "' "
+                + "and id_pro_mae='" + productoID + "' ";
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            Integer i = ps.executeUpdate();
+            if (i == 0) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+
+        return false;
     }
 
 }

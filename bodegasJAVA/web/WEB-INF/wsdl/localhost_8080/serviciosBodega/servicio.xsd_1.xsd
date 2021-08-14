@@ -8,6 +8,10 @@
 
 <xs:element name="ciudadUsuarioResponse" type="tns:ciudadUsuarioResponse"/>
 
+<xs:element name="comprar" type="tns:comprar"/>
+
+<xs:element name="comprarResponse" type="tns:comprarResponse"/>
+
 <xs:element name="getDatos" type="tns:getDatos"/>
 
 <xs:element name="getDatosResponse" type="tns:getDatosResponse"/>
@@ -154,6 +158,20 @@
 </xs:complexType>
 
 <xs:complexType name="verificarCompraResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comprar">
+<xs:sequence>
+<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
+<xs:element name="productoID" type="xs:string" minOccurs="0"/>
+<xs:element name="cantidad" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="comprarResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:boolean" minOccurs="0"/>
 </xs:sequence>

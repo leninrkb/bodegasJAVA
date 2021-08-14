@@ -59,6 +59,12 @@ public class Servicios {
         return port.verificarCompra(productoID, bodegaID, cantidad);
     }
 
+    public Boolean comprar(java.lang.String bodegaID, java.lang.String productoID, java.lang.Integer cantidad) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.comprar(bodegaID, productoID, cantidad);
+    }
+
     
     
     
