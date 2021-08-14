@@ -80,6 +80,13 @@ public class Controlador extends HttpServlet {
                 String ciudad = s.ciudadUsuario((String) session.getAttribute("session_usuario"));
                 //s.comprar(producto);
                 break;
+            case "addproducto":
+                valor = add;
+                
+            case "editproducto":
+                 valor = edit;
+            case "eliminarproducto":
+                valor = add;
 
             default:
                 break;
