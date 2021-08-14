@@ -34,6 +34,8 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     String valor = "";
+    String add = "add.jsp";
+    String edit = "edit.jsp";
     Servicios s = new Servicios();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
