@@ -24,6 +24,8 @@ public class servicio {
     /**
      * This is a sample web service operation
      */
+    //Para poder listar
+    ContenedorDAO ed = new ContenedorDAO();
     @WebMethod(operationName = "hello")
     public String hello(@WebParam(name = "name") String txt) {
         return "Hello " + txt + " !";
@@ -92,5 +94,34 @@ public class servicio {
     public Boolean verificarCompra(@WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "productoID") String productoID, @WebParam(name = "cantidad") Integer cantidad) {
         //TODO write your implementation code here:
         return c.verificarCompra(bodegaID, productoID, cantidad);
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "addproducto")
+    public String addproducto(@WebParam(name = "id") String id, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") String precio) {
+        String datos = ed.addproducto(id, nombre, precio);
+        return datos;
+    }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "editproducto")
+    public String editproducto(@WebParam(name = "id") String id, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") String precio) {
+        //TODO write your implementation code here:
+        String datos = ed.editproducto(id, nombre, precio);
+        return datos;
+    }
+    
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "eliminarproducto")
+    public Producto eliminarproducto(@WebParam(name = "id") String id) {
+        //TODO write your implementation code here:
+        Producto pro = ed.eliminarproducto(id);
+        return pro;
     }
 }
