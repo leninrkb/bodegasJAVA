@@ -84,6 +84,13 @@ body{
     
 }
 
+#servicio #mal{
+    background-color: #ff9d80;
+    padding: 10px;
+    border-radius: 5px;
+    
+}
+
 #nav{
     margin: 5px;
     background-color: #8375f0;
@@ -138,5 +145,7 @@ body{
     width: 500px;
     
 }
+
+
 
 
