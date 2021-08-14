@@ -1,5 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.2 (UNKNOWN-17d59c9; 2018-09-26T15:16:30-0700) JAXWS-RI/2.3.1 JAXWS-API/2.3.1 JAXB-RI/2.3.1 JAXB-API/2.3.1 svn-revision#unknown. --><xs:schema xmlns:tns="http://servicios/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://servicios/">
 
+<xs:element name="addproducto" type="tns:addproducto"/>
+
+<xs:element name="addproductoResponse" type="tns:addproductoResponse"/>
+
 <xs:element name="bodegasCiudad" type="tns:bodegasCiudad"/>
 
 <xs:element name="bodegasCiudadResponse" type="tns:bodegasCiudadResponse"/>
@@ -11,6 +15,14 @@
 <xs:element name="comprar" type="tns:comprar"/>
 
 <xs:element name="comprarResponse" type="tns:comprarResponse"/>
+
+<xs:element name="editproducto" type="tns:editproducto"/>
+
+<xs:element name="editproductoResponse" type="tns:editproductoResponse"/>
+
+<xs:element name="eliminarproducto" type="tns:eliminarproducto"/>
+
+<xs:element name="eliminarproductoResponse" type="tns:eliminarproductoResponse"/>
 
 <xs:element name="getDatos" type="tns:getDatos"/>
 
@@ -40,6 +52,77 @@
 
 <xs:element name="verificarCompraResponse" type="tns:verificarCompraResponse"/>
 
+<xs:complexType name="getDatos">
+<xs:sequence>
+<xs:element name="producto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDatosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="contenedor">
+<xs:sequence>
+<xs:element name="bodega" type="xs:string" minOccurs="0"/>
+<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="ciudadID" type="xs:string" minOccurs="0"/>
+<xs:element name="disp" type="xs:string" minOccurs="0"/>
+<xs:element name="precio" type="xs:string" minOccurs="0"/>
+<xs:element name="producto" type="xs:string" minOccurs="0"/>
+<xs:element name="productoID" type="xs:string" minOccurs="0"/>
+<xs:element name="stock" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="login">
+<xs:sequence>
+<xs:element name="usuario" type="xs:string" minOccurs="0"/>
+<xs:element name="contrasenia" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="loginResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarCompra">
+<xs:sequence>
+<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
+<xs:element name="productoID" type="xs:string" minOccurs="0"/>
+<xs:element name="cantidad" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="verificarCompraResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getProductos">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getProductosResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:producto" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="producto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="precio" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="tipoUsuario">
 <xs:sequence>
 <xs:element name="usuario" type="xs:string" minOccurs="0"/>
@@ -62,20 +145,6 @@
 <xs:complexType name="getDatosXCiudadResponse">
 <xs:sequence>
 <xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="contenedor">
-<xs:sequence>
-<xs:element name="bodega" type="xs:string" minOccurs="0"/>
-<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
-<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
-<xs:element name="ciudadID" type="xs:string" minOccurs="0"/>
-<xs:element name="disp" type="xs:string" minOccurs="0"/>
-<xs:element name="precio" type="xs:string" minOccurs="0"/>
-<xs:element name="producto" type="xs:string" minOccurs="0"/>
-<xs:element name="productoID" type="xs:string" minOccurs="0"/>
-<xs:element name="stock" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -112,6 +181,18 @@
 </xs:sequence>
 </xs:complexType>
 
+<xs:complexType name="eliminarproducto">
+<xs:sequence>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="eliminarproductoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:producto" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
 <xs:complexType name="ciudadUsuario">
 <xs:sequence>
 <xs:element name="usuario" type="xs:string" minOccurs="0"/>
@@ -124,42 +205,17 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getDatos">
+<xs:complexType name="addproducto">
 <xs:sequence>
-<xs:element name="producto" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+<xs:element name="precio" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getDatosResponse">
+<xs:complexType name="addproductoResponse">
 <xs:sequence>
-<xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="login">
-<xs:sequence>
-<xs:element name="usuario" type="xs:string" minOccurs="0"/>
-<xs:element name="contrasenia" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="loginResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="verificarCompra">
-<xs:sequence>
-<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
-<xs:element name="productoID" type="xs:string" minOccurs="0"/>
-<xs:element name="cantidad" type="xs:int" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="verificarCompraResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -177,21 +233,17 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getProductos">
-<xs:sequence/>
-</xs:complexType>
-
-<xs:complexType name="getProductosResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:producto" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="producto">
+<xs:complexType name="editproducto">
 <xs:sequence>
 <xs:element name="id" type="xs:string" minOccurs="0"/>
 <xs:element name="nombre" type="xs:string" minOccurs="0"/>
 <xs:element name="precio" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="editproductoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 </xs:schema>

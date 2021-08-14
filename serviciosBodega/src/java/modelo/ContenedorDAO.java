@@ -334,7 +334,10 @@ public class ContenedorDAO implements Crud {
         }
 
         return false;
+    }
 
+    
+    //esta de revisar q funcione al 100%
     @Override
     public String addproducto(String id, String nombre, String precio) {
         String sql = "Insert into producto(id_pro, nom_pro, pre_pro) values(?,?,?)";
@@ -345,7 +348,7 @@ public class ContenedorDAO implements Crud {
             ps.setString(1, id);
             ps.setString(2, nombre);
             ps.setString(3, precio);
-            
+
             res = ps.executeUpdate();
 
             if (res == 1) {
@@ -359,6 +362,8 @@ public class ContenedorDAO implements Crud {
         return msj;
     }
 
+    
+    //esta de revisar q funcione al 100%
     @Override
     public String editproducto(String id, String nombre, String precio) {
         String sql = "Update producto set nom_pro=?,pre_pro=? where id_pro=" + id;
@@ -381,9 +386,11 @@ public class ContenedorDAO implements Crud {
         return msj;
     }
 
+    
+    //esta de revisar q funcione al 100%
     @Override
     public Producto eliminarproducto(String id) {
-        String sql = "Delete from producto where id_pro=" + id;
+        String sql = "delete from producto where id_pro=" + id + " ";
 
         try {
             conn = con.getConexion();

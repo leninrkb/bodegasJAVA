@@ -30,7 +30,10 @@ public interface Crud {
     public List bodegasCiudad(String ciudad); //recupera las bodegas que existen en una ciudad
 
     public Boolean comprar(String bodegaID, String productoID, Integer cantidad);//realiza la compra sin verificar, x lo q primero se usa verificarCompra()
+
     public String addproducto(String id, String nombre, String precio);  //Permite ingresar los productos
+
     public String editproducto(String id, String nombre, String precio); //Permite editar los productos 
+
     public Producto eliminarproducto(String id);//Permite eliminar los productos
 }

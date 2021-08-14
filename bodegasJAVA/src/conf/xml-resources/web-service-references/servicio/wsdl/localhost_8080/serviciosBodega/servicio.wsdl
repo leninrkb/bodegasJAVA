@@ -64,6 +64,24 @@
 <message name="bodegasCiudadResponse">
 <part name="parameters" element="tns:bodegasCiudadResponse"/>
 </message>
+<message name="addproducto">
+<part name="parameters" element="tns:addproducto"/>
+</message>
+<message name="addproductoResponse">
+<part name="parameters" element="tns:addproductoResponse"/>
+</message>
+<message name="editproducto">
+<part name="parameters" element="tns:editproducto"/>
+</message>
+<message name="editproductoResponse">
+<part name="parameters" element="tns:editproductoResponse"/>
+</message>
+<message name="eliminarproducto">
+<part name="parameters" element="tns:eliminarproducto"/>
+</message>
+<message name="eliminarproductoResponse">
+<part name="parameters" element="tns:eliminarproductoResponse"/>
+</message>
 <portType name="servicio">
 <operation name="login">
 <input wsam:Action="http://servicios/servicio/loginRequest" message="tns:login"/>
@@ -104,6 +122,18 @@
 <operation name="bodegasCiudad">
 <input wsam:Action="http://servicios/servicio/bodegasCiudadRequest" message="tns:bodegasCiudad"/>
 <output wsam:Action="http://servicios/servicio/bodegasCiudadResponse" message="tns:bodegasCiudadResponse"/>
+</operation>
+<operation name="addproducto">
+<input wsam:Action="http://servicios/servicio/addproductoRequest" message="tns:addproducto"/>
+<output wsam:Action="http://servicios/servicio/addproductoResponse" message="tns:addproductoResponse"/>
+</operation>
+<operation name="editproducto">
+<input wsam:Action="http://servicios/servicio/editproductoRequest" message="tns:editproducto"/>
+<output wsam:Action="http://servicios/servicio/editproductoResponse" message="tns:editproductoResponse"/>
+</operation>
+<operation name="eliminarproducto">
+<input wsam:Action="http://servicios/servicio/eliminarproductoRequest" message="tns:eliminarproducto"/>
+<output wsam:Action="http://servicios/servicio/eliminarproductoResponse" message="tns:eliminarproductoResponse"/>
 </operation>
 </portType>
 <binding name="servicioPortBinding" type="tns:servicio">
@@ -190,6 +220,33 @@
 </output>
 </operation>
 <operation name="bodegasCiudad">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="addproducto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="editproducto">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="eliminarproducto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

@@ -100,7 +100,7 @@ public class servicio {
     public Boolean comprar(@WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "productoID") String productoID, @WebParam(name = "cantidad") Integer cantidad) {
         //TODO write your implementation code here:
         return c.comprar(bodegaID, productoID, cantidad);
-
+    }
     /**
      * Web service operation
      */
