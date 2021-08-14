@@ -75,11 +75,7 @@ public class Controlador extends HttpServlet {
                 valor = "index.jsp";
                     break;
                     
-            case "comprar":
-                String producto = request.getParameter("productoID_compra");
-                String ciudad = s.ciudadUsuario((String) session.getAttribute("session_usuario"));
-                //s.comprar(producto);
-                break;
+            
             case "addproducto":
                 valor = add;
                 
