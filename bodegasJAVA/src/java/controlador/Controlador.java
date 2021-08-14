@@ -82,7 +82,12 @@ public class Controlador extends HttpServlet {
             case "inicioCliente":
                 valor = "pages/sesion_iniciada/inicio.jsp";
                     break;
-           
+            case "adminBodegas":
+                valor = "pages/sesion_iniciada/admin/inicio.jsp";
+                    break;
+            case "adminProductos":
+                valor = "pages/sesion_iniciada/admin/inicioProducto.jsp";
+                    break;
             
             case "addproducto":
                 valor = add;

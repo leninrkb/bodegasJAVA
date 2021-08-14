@@ -10,6 +10,7 @@ import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import modelo.Bodega;
+import modelo.Ciudad;
 import modelo.Contenedor;
 import modelo.ContenedorDAO;
 import modelo.Producto;
@@ -128,5 +129,12 @@ public class servicio {
         //TODO write your implementation code here:
         Producto pro = ed.eliminarproducto(id);
         return pro;
+    }
+    
+    @WebMethod(operationName = "getCiudades")
+    public List<Ciudad> getCiudades() {
+        //TODO write your implementation code here:
+      return ed.getCiudades();
+        
     }
 }

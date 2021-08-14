@@ -214,6 +214,8 @@ public class ContenedorDAO implements Crud {
         return datos;
     }
 
+    
+    //verifica antes de comprar
     @Override
     public Boolean verificarCompra(String bodegaID, String productoID, Integer cantidad) {
         String sql = "select * from maestrobodega "
@@ -242,6 +244,8 @@ public class ContenedorDAO implements Crud {
         return false;
     }
 
+    
+    //retorna las bodegas de una ciudad x
     @Override
     public List bodegasCiudad(String ciudad) {
         List<Bodega> datos = new ArrayList<>();
@@ -272,6 +276,8 @@ public class ContenedorDAO implements Crud {
         return datos;
     }
 
+    
+    //verifica y compra, tiene en cuenta el stock y la disponibilidad
     @Override
     public Boolean comprar(String bodegaID, String productoID, Integer cantidad) {
         String sql = "update maestrobodega "
@@ -296,6 +302,7 @@ public class ContenedorDAO implements Crud {
         return false;
     }
 
+    //comprueba el stock
     private Boolean comprobarStock(String bodegaID, String productoID) {
         String sql = "select * from maestrobodega "
                 + "where id_pro_mae='" + productoID + "' "
@@ -318,6 +325,7 @@ public class ContenedorDAO implements Crud {
         return false;
     }
 
+    //actualiza la disponibilidad del producto
     private Boolean updateDisponibilidad(String bodegaID, String productoID) {
         String sql = "update maestrobodega "
                 + "set disp_mae= 'n' "
@@ -400,6 +408,31 @@ public class ContenedorDAO implements Crud {
         } catch (Exception e) {
         }
         return pro;
+    }
+
+    @Override
+    public List getCiudades() {
+        List<Ciudad> datos = new ArrayList<>();
+        String sql = "select * from ciudad";
+        
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {                
+                Ciudad c = new Ciudad();
+                
+                c.setId(rs.getString("id_ciu"));
+                c.setCiudad(rs.getString("nom_ciu"));
+                
+                datos.add(c);
+            }
+            
+            return datos;
+        } catch (Exception e) {
+        }
+        return null;
     }
 
 }

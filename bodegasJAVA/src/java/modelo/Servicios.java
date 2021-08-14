@@ -84,6 +84,12 @@ public class Servicios {
         return port.comprar(bodegaID, productoID, cantidad);
     }
 
+    public java.util.List<servicios.Ciudad> getCiudades() {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.getCiudades();
+    }
+
     
     
     

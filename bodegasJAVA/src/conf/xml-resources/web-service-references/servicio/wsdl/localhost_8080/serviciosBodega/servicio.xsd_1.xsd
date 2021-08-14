@@ -24,6 +24,10 @@
 
 <xs:element name="eliminarproductoResponse" type="tns:eliminarproductoResponse"/>
 
+<xs:element name="getCiudades" type="tns:getCiudades"/>
+
+<xs:element name="getCiudadesResponse" type="tns:getCiudadesResponse"/>
+
 <xs:element name="getDatos" type="tns:getDatos"/>
 
 <xs:element name="getDatosResponse" type="tns:getDatosResponse"/>
@@ -75,6 +79,23 @@
 <xs:element name="producto" type="xs:string" minOccurs="0"/>
 <xs:element name="productoID" type="xs:string" minOccurs="0"/>
 <xs:element name="stock" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getCiudades">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getCiudadesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:ciudad" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ciudad">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 
@@ -135,31 +156,6 @@
 </xs:sequence>
 </xs:complexType>
 
-<xs:complexType name="getDatosXCiudad">
-<xs:sequence>
-<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
-<xs:element name="producto" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="getDatosXCiudadResponse">
-<xs:sequence>
-<xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="hello">
-<xs:sequence>
-<xs:element name="name" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
-<xs:complexType name="helloResponse">
-<xs:sequence>
-<xs:element name="return" type="xs:string" minOccurs="0"/>
-</xs:sequence>
-</xs:complexType>
-
 <xs:complexType name="bodegasCiudad">
 <xs:sequence>
 <xs:element name="ciudad" type="xs:string" minOccurs="0"/>
@@ -178,6 +174,31 @@
 <xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
 <xs:element name="bodegaRUC" type="xs:string" minOccurs="0"/>
 <xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hello">
+<xs:sequence>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="helloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDatosXCiudad">
+<xs:sequence>
+<xs:element name="ciudad" type="xs:string" minOccurs="0"/>
+<xs:element name="producto" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDatosXCiudadResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:contenedor" minOccurs="0" maxOccurs="unbounded"/>
 </xs:sequence>
 </xs:complexType>
 

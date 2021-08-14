@@ -1,5 +1,3 @@
-
-<%@page import="servicios.Ciudad"%>
 <%@page import="servicios.Contenedor"%>
 <%@page import="java.util.List"%>
 <%@page import="modelo.Servicios"%>
@@ -15,11 +13,10 @@
         <header>
             <div id="header">
                 <center>
-                    Administrador Bodegas
+                    Administrador Productos
                 </center>
             </div>
         </header>
-
         <div id="nav">
             <nav>
                 <ul>
@@ -39,33 +36,25 @@
         </div>
 
         <div id="contenido">
-            <form id="buscar">
-                Ciudad:
-                <select name="ciudad_buscar">
-                    <option value="">todos</option>
-                    <%
-                        Servicios s = new Servicios();
-                        List<Ciudad> ciudades = s.getCiudades();
-                        for (Ciudad c : ciudades) {
-                    %>
-                    <option><%=c.getCiudad()%></option>                        
-                    <%
-                        }
-                    %>
-                </select>
+            <div>
+                <form id="buscar">
+                    <input type="text" name="producto_buscar" placeholder="ej:galletas">
+                    <input type="submit" name="accion" value="buscar">
+                    <br><br>
+                    <div>
+                        <input type="submit" name="accion" value="Refrescar Datos">
+                    </div>
 
-                Producto:
-                <input type="text" name="producto_buscar" placeholder="ej:galletas">
-                <input type="submit" name="accion" value="buscar">
-                <br><br>
-                <div>
-                    <input type="submit" name="accion" value="Refrescar Datos">
-                </div>
-            </form>
+                </form>
+
+            </div>
 
             <div id="tabla">
+
                 <table>
+
                     <thead>
+
                     <th>Bodega</th>
                     <th>Ciudad</th>
                     <th>Producto</th>
@@ -74,13 +63,17 @@
                     </thead>
                     <tbody>
                         <%
+                            Servicios s = new Servicios();
                             String producto = request.getParameter("producto_buscar");
-                            String ciudad = request.getParameter("ciudad_buscar");
+                            //admin puede ver todo, no hace falta recuperar la ciudad
+                            String ciudad = "";
+                            
 
                             List<Contenedor> datos = s.getDatosXCiudad(ciudad, producto);
                             for (Contenedor c : datos) {
                         %>
                         <tr>
+
                             <td><%=c.getBodega()%></td>
                             <td><%=c.getCiudad()%></td>
                             <td><%=c.getProducto()%></td>
@@ -90,22 +83,14 @@
                         <% }%>
                     </tbody>
                 </table>
-            </div> 
-            <div id="servicio">           
-                <form>
-                    <select name="bodegaID">                      
-                        <%                           
-                            for (Contenedor c : datos) {
-                        %>
-                        <option><%=c.getBodega()%></option>                        
-                        <%
-                            }
-                        %>
-                    </select>
-                </form>
-            </div>
-        </div>
 
+            </div> 
+
+
+
+
+
+        </div>
 
 
         <div id="footer">

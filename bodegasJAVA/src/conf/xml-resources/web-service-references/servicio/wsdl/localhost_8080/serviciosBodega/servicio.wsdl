@@ -10,29 +10,17 @@
 <message name="loginResponse">
 <part name="parameters" element="tns:loginResponse"/>
 </message>
-<message name="comprar">
-<part name="parameters" element="tns:comprar"/>
+<message name="verificarCompra">
+<part name="parameters" element="tns:verificarCompra"/>
 </message>
-<message name="comprarResponse">
-<part name="parameters" element="tns:comprarResponse"/>
+<message name="verificarCompraResponse">
+<part name="parameters" element="tns:verificarCompraResponse"/>
 </message>
-<message name="ciudadUsuario">
-<part name="parameters" element="tns:ciudadUsuario"/>
+<message name="bodegasCiudad">
+<part name="parameters" element="tns:bodegasCiudad"/>
 </message>
-<message name="ciudadUsuarioResponse">
-<part name="parameters" element="tns:ciudadUsuarioResponse"/>
-</message>
-<message name="getDatosXCiudad">
-<part name="parameters" element="tns:getDatosXCiudad"/>
-</message>
-<message name="getDatosXCiudadResponse">
-<part name="parameters" element="tns:getDatosXCiudadResponse"/>
-</message>
-<message name="hello">
-<part name="parameters" element="tns:hello"/>
-</message>
-<message name="helloResponse">
-<part name="parameters" element="tns:helloResponse"/>
+<message name="bodegasCiudadResponse">
+<part name="parameters" element="tns:bodegasCiudadResponse"/>
 </message>
 <message name="getDatos">
 <part name="parameters" element="tns:getDatos"/>
@@ -46,35 +34,11 @@
 <message name="tipoUsuarioResponse">
 <part name="parameters" element="tns:tipoUsuarioResponse"/>
 </message>
-<message name="getProductos">
-<part name="parameters" element="tns:getProductos"/>
+<message name="ciudadUsuario">
+<part name="parameters" element="tns:ciudadUsuario"/>
 </message>
-<message name="getProductosResponse">
-<part name="parameters" element="tns:getProductosResponse"/>
-</message>
-<message name="verificarCompra">
-<part name="parameters" element="tns:verificarCompra"/>
-</message>
-<message name="verificarCompraResponse">
-<part name="parameters" element="tns:verificarCompraResponse"/>
-</message>
-<message name="bodegasCiudad">
-<part name="parameters" element="tns:bodegasCiudad"/>
-</message>
-<message name="bodegasCiudadResponse">
-<part name="parameters" element="tns:bodegasCiudadResponse"/>
-</message>
-<message name="addproducto">
-<part name="parameters" element="tns:addproducto"/>
-</message>
-<message name="addproductoResponse">
-<part name="parameters" element="tns:addproductoResponse"/>
-</message>
-<message name="editproducto">
-<part name="parameters" element="tns:editproducto"/>
-</message>
-<message name="editproductoResponse">
-<part name="parameters" element="tns:editproductoResponse"/>
+<message name="ciudadUsuarioResponse">
+<part name="parameters" element="tns:ciudadUsuarioResponse"/>
 </message>
 <message name="eliminarproducto">
 <part name="parameters" element="tns:eliminarproducto"/>
@@ -82,38 +46,52 @@
 <message name="eliminarproductoResponse">
 <part name="parameters" element="tns:eliminarproductoResponse"/>
 </message>
+<message name="addproducto">
+<part name="parameters" element="tns:addproducto"/>
+</message>
+<message name="addproductoResponse">
+<part name="parameters" element="tns:addproductoResponse"/>
+</message>
+<message name="comprar">
+<part name="parameters" element="tns:comprar"/>
+</message>
+<message name="comprarResponse">
+<part name="parameters" element="tns:comprarResponse"/>
+</message>
+<message name="hello">
+<part name="parameters" element="tns:hello"/>
+</message>
+<message name="helloResponse">
+<part name="parameters" element="tns:helloResponse"/>
+</message>
+<message name="getProductos">
+<part name="parameters" element="tns:getProductos"/>
+</message>
+<message name="getProductosResponse">
+<part name="parameters" element="tns:getProductosResponse"/>
+</message>
+<message name="editproducto">
+<part name="parameters" element="tns:editproducto"/>
+</message>
+<message name="editproductoResponse">
+<part name="parameters" element="tns:editproductoResponse"/>
+</message>
+<message name="getDatosXCiudad">
+<part name="parameters" element="tns:getDatosXCiudad"/>
+</message>
+<message name="getDatosXCiudadResponse">
+<part name="parameters" element="tns:getDatosXCiudadResponse"/>
+</message>
+<message name="getCiudades">
+<part name="parameters" element="tns:getCiudades"/>
+</message>
+<message name="getCiudadesResponse">
+<part name="parameters" element="tns:getCiudadesResponse"/>
+</message>
 <portType name="servicio">
 <operation name="login">
 <input wsam:Action="http://servicios/servicio/loginRequest" message="tns:login"/>
 <output wsam:Action="http://servicios/servicio/loginResponse" message="tns:loginResponse"/>
-</operation>
-<operation name="comprar">
-<input wsam:Action="http://servicios/servicio/comprarRequest" message="tns:comprar"/>
-<output wsam:Action="http://servicios/servicio/comprarResponse" message="tns:comprarResponse"/>
-</operation>
-<operation name="ciudadUsuario">
-<input wsam:Action="http://servicios/servicio/ciudadUsuarioRequest" message="tns:ciudadUsuario"/>
-<output wsam:Action="http://servicios/servicio/ciudadUsuarioResponse" message="tns:ciudadUsuarioResponse"/>
-</operation>
-<operation name="getDatosXCiudad">
-<input wsam:Action="http://servicios/servicio/getDatosXCiudadRequest" message="tns:getDatosXCiudad"/>
-<output wsam:Action="http://servicios/servicio/getDatosXCiudadResponse" message="tns:getDatosXCiudadResponse"/>
-</operation>
-<operation name="hello">
-<input wsam:Action="http://servicios/servicio/helloRequest" message="tns:hello"/>
-<output wsam:Action="http://servicios/servicio/helloResponse" message="tns:helloResponse"/>
-</operation>
-<operation name="getDatos">
-<input wsam:Action="http://servicios/servicio/getDatosRequest" message="tns:getDatos"/>
-<output wsam:Action="http://servicios/servicio/getDatosResponse" message="tns:getDatosResponse"/>
-</operation>
-<operation name="tipoUsuario">
-<input wsam:Action="http://servicios/servicio/tipoUsuarioRequest" message="tns:tipoUsuario"/>
-<output wsam:Action="http://servicios/servicio/tipoUsuarioResponse" message="tns:tipoUsuarioResponse"/>
-</operation>
-<operation name="getProductos">
-<input wsam:Action="http://servicios/servicio/getProductosRequest" message="tns:getProductos"/>
-<output wsam:Action="http://servicios/servicio/getProductosResponse" message="tns:getProductosResponse"/>
 </operation>
 <operation name="verificarCompra">
 <input wsam:Action="http://servicios/servicio/verificarCompraRequest" message="tns:verificarCompra"/>
@@ -123,17 +101,49 @@
 <input wsam:Action="http://servicios/servicio/bodegasCiudadRequest" message="tns:bodegasCiudad"/>
 <output wsam:Action="http://servicios/servicio/bodegasCiudadResponse" message="tns:bodegasCiudadResponse"/>
 </operation>
+<operation name="getDatos">
+<input wsam:Action="http://servicios/servicio/getDatosRequest" message="tns:getDatos"/>
+<output wsam:Action="http://servicios/servicio/getDatosResponse" message="tns:getDatosResponse"/>
+</operation>
+<operation name="tipoUsuario">
+<input wsam:Action="http://servicios/servicio/tipoUsuarioRequest" message="tns:tipoUsuario"/>
+<output wsam:Action="http://servicios/servicio/tipoUsuarioResponse" message="tns:tipoUsuarioResponse"/>
+</operation>
+<operation name="ciudadUsuario">
+<input wsam:Action="http://servicios/servicio/ciudadUsuarioRequest" message="tns:ciudadUsuario"/>
+<output wsam:Action="http://servicios/servicio/ciudadUsuarioResponse" message="tns:ciudadUsuarioResponse"/>
+</operation>
+<operation name="eliminarproducto">
+<input wsam:Action="http://servicios/servicio/eliminarproductoRequest" message="tns:eliminarproducto"/>
+<output wsam:Action="http://servicios/servicio/eliminarproductoResponse" message="tns:eliminarproductoResponse"/>
+</operation>
 <operation name="addproducto">
 <input wsam:Action="http://servicios/servicio/addproductoRequest" message="tns:addproducto"/>
 <output wsam:Action="http://servicios/servicio/addproductoResponse" message="tns:addproductoResponse"/>
+</operation>
+<operation name="comprar">
+<input wsam:Action="http://servicios/servicio/comprarRequest" message="tns:comprar"/>
+<output wsam:Action="http://servicios/servicio/comprarResponse" message="tns:comprarResponse"/>
+</operation>
+<operation name="hello">
+<input wsam:Action="http://servicios/servicio/helloRequest" message="tns:hello"/>
+<output wsam:Action="http://servicios/servicio/helloResponse" message="tns:helloResponse"/>
+</operation>
+<operation name="getProductos">
+<input wsam:Action="http://servicios/servicio/getProductosRequest" message="tns:getProductos"/>
+<output wsam:Action="http://servicios/servicio/getProductosResponse" message="tns:getProductosResponse"/>
 </operation>
 <operation name="editproducto">
 <input wsam:Action="http://servicios/servicio/editproductoRequest" message="tns:editproducto"/>
 <output wsam:Action="http://servicios/servicio/editproductoResponse" message="tns:editproductoResponse"/>
 </operation>
-<operation name="eliminarproducto">
-<input wsam:Action="http://servicios/servicio/eliminarproductoRequest" message="tns:eliminarproducto"/>
-<output wsam:Action="http://servicios/servicio/eliminarproductoResponse" message="tns:eliminarproductoResponse"/>
+<operation name="getDatosXCiudad">
+<input wsam:Action="http://servicios/servicio/getDatosXCiudadRequest" message="tns:getDatosXCiudad"/>
+<output wsam:Action="http://servicios/servicio/getDatosXCiudadResponse" message="tns:getDatosXCiudadResponse"/>
+</operation>
+<operation name="getCiudades">
+<input wsam:Action="http://servicios/servicio/getCiudadesRequest" message="tns:getCiudades"/>
+<output wsam:Action="http://servicios/servicio/getCiudadesResponse" message="tns:getCiudadesResponse"/>
 </operation>
 </portType>
 <binding name="servicioPortBinding" type="tns:servicio">
@@ -147,7 +157,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="comprar">
+<operation name="verificarCompra">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -156,25 +166,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="ciudadUsuario">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="getDatosXCiudad">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="hello">
+<operation name="bodegasCiudad">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -201,7 +193,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="getProductos">
+<operation name="ciudadUsuario">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -210,16 +202,7 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="verificarCompra">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="bodegasCiudad">
+<operation name="eliminarproducto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>
@@ -237,6 +220,33 @@
 <soap:body use="literal"/>
 </output>
 </operation>
+<operation name="comprar">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="hello">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getProductos">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
 <operation name="editproducto">
 <soap:operation soapAction=""/>
 <input>
@@ -246,7 +256,16 @@
 <soap:body use="literal"/>
 </output>
 </operation>
-<operation name="eliminarproducto">
+<operation name="getDatosXCiudad">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="getCiudades">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

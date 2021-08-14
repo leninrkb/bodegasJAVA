@@ -36,4 +36,6 @@ public interface Crud {
     public String editproducto(String id, String nombre, String precio); //Permite editar los productos 
 
     public Producto eliminarproducto(String id);//Permite eliminar los productos
+    
+    public List getCiudades();//retorna todas ciudades existentes
 }
