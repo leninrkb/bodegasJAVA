@@ -75,12 +75,21 @@ public class Controlador extends HttpServlet {
                 valor = "index.jsp";
                     break;
                     
+            case "vamos":
+                valor = "pages/sesion_iniciada/compraExterna.jsp";
+                    break;
+                    
+            case "inicioCliente":
+                valor = "pages/sesion_iniciada/inicio.jsp";
+                    break;
+           
             
             case "addproducto":
                 valor = add;
                 
             case "editproducto":
                  valor = edit;
+                 
             case "eliminarproducto":
                 valor = add;
 

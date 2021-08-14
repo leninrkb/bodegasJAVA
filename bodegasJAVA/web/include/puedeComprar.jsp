@@ -1,3 +1,3 @@
 <div>
-    puede comprar
+    Realizado !
 </div>

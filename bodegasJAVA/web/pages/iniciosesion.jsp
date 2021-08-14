@@ -9,6 +9,14 @@
         <title>superbodegas</title>
     </head>
     <body>
+        <header>
+            <div id="header">
+                <center>
+                    Iniciar Sesion
+                </center>
+            </div>
+
+        </header>
         <div id="nav">
             <nav>
                 <ul>

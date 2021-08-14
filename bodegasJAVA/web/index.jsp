@@ -12,6 +12,14 @@
         <title>superbodegas</title>
     </head>
     <body>
+        <header>
+            <div id="header">
+                <center>
+                    Superbodegas
+                </center>
+            </div>
+
+        </header>
         <div id="nav">
             <nav>
                 <ul>

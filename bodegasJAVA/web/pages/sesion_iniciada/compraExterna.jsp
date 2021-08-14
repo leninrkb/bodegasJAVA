@@ -5,7 +5,6 @@
 <%@page import="java.util.List"%>
 <%@page import="modelo.Servicios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<% //HttpSession session = (HttpSession) request.getSession(); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,21 +13,19 @@
         <title>superbodegas</title>
     </head>
     <body>
-
         <header>
             <div id="header">
                 <center>
-                    Compra Cliente
+                    Compra Externa Cliente
                 </center>
             </div>
-        </header>
 
+        </header>
         <div id="nav">
             <nav>
                 <ul>
-
                     <li><a href="Controlador?accion=inicioCliente">Inicio Cliente</a></li>
-                    <li><a href="Controlador?accion=cerrarsesion">Cerrar Sesion</a></li>
+                    <li><a href="Controlador?accion=cerrarsesion">Cerrar Sesion</a></li>   
                     <center>
                         <li><a href="#">
                                 Bienvenid@:
@@ -37,24 +34,17 @@
                                 %>
                                 <%=usuario%></a></li>   
                     </center>
-
                 </ul>
             </nav>
         </div>
 
         <div id="contenido">
 
-
-
             <div>
-                <form id="buscar">
-                    <input type="text" name="producto_buscar" placeholder="ej:galletas">
-                    <input type="submit" name="accion" value="buscar">
-                    <br><br>
+                <form id="buscar">                   
                     <div>
                         <input type="submit" name="accion" value="Refrescar Datos">
                     </div>
-
                 </form>
 
             </div>
@@ -74,12 +64,12 @@
                     <tbody>
                         <%
                             Servicios s = new Servicios();
-                            String producto = request.getParameter("producto_buscar");
-                            String ciudad = s.ciudadUsuario(usuario);
-                            session.setAttribute("session_ciudad", ciudad);
+                            String ciudad = "";
+                            String producto = (String) session.getAttribute("session_producto");
 
                             List<Contenedor> datos = s.getDatosXCiudad(ciudad, producto);
                             for (Contenedor c : datos) {
+                                if (!c.getCiudad().equals((String) session.getAttribute("session_ciudad"))) {
                         %>
                         <tr>
 
@@ -89,39 +79,36 @@
                             <td><%=c.getPrecio()%></td>
                             <td><%=c.getStock()%></td>
                         </tr>
-                        <% }%>
+                        <% }
+                            }%>
                     </tbody>
                 </table>
-
-            </div> 
+            </div>
 
             <div id="servicio">
                 <form>
                     Bodega:
                     <select name="bodegaID_compra">
                         <%
-                            List<Bodega> bodega = s.bodegasCiudad(ciudad);
-                            for (Bodega b : bodega) {
+                            for (Contenedor b : datos) {
+                                if (producto.equals(b.getProducto())) {
+                                    if (!b.getCiudad().equals((String) session.getAttribute("session_ciudad"))) {
+
                         %>
                         <option value="<%=b.getBodegaID()%>"><%=b.getBodega()%></option>
-                        <%                            }
+                        <%
+                                    }
+                                }
+                            }
                         %>
                     </select>
                     <br><br>
 
 
                     Producto:
-                    <select name="productoID_compra">
-                        <%
-                            for (Contenedor c : datos) {
-
-                        %>
-
-                        <option value="<%=c.getProductoID()%>"><%=c.getProducto()%></option>
-
-                        <%                            }
-                        %>
-                    </select>
+                    <div id="alerta">
+                        <%= session.getAttribute("session_producto")%>
+                    </div>
                     <br><br>
 
                     Cantidad:
@@ -133,16 +120,7 @@
                 <%
                     String accion = request.getParameter("accion");
                     if (accion.equals("comprar")) {
-                        //captura el nmbre del producto igual al id seleccionado en el combo
-                        String productoID = request.getParameter("productoID_compra");
-                        for (Contenedor c : datos) {
-                            if (c.getProductoID().equals(productoID)) {
-                                session.setAttribute("session_producto", c.getProducto());
-                                session.setAttribute("session_productoID", c.getProductoID());
-                                break;
-                            }
-                        }
-
+                        String productoID = (String) session.getAttribute("session_productoID");
                         String bodegaID = request.getParameter("bodegaID_compra");
                         Integer cantidad = Integer.parseInt(request.getParameter("cantidad_compra"));
 
@@ -160,25 +138,22 @@
                 %>
                 <br>
                 <div id="alerta">
-                    <jsp:include page="../../include/noPuedeComprar.jsp" flush="true" /><br>
-                    <form>
-                        Puede revisar el mismo producto en otra bodega:
-                        <input type="submit" name="accion" value="vamos">
-                    </form>
-                </div>
+                    <jsp:include page="../../include/noPuedeComprar.jsp" flush="true" />
 
+                </div>
 
                 <%                    }
                     }
                 %>
             </div>
+
+
+
+
+
+
         </div>
 
-        <div id="footer">
-            <section>
-                <jsp:include page="../../include/footer.jsp" flush="true" />
-            </section>
-        </div>
 
 
     </body>

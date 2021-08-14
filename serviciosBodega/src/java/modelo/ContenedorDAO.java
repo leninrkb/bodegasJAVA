@@ -147,7 +147,7 @@ public class ContenedorDAO implements Crud {
     public String ciudadUsuario(String usuario) {
         String sql = "select nom_ciu from usuario u, ciudad c "
                 + "where u.id_ciu_usu=c.id_ciu "
-                + "and u.nom_usu='" + usuario + "'";
+                + "and u.nom_usu = '" + usuario + "'";
         String ciudad = "";
         try {
             conn = con.getConexion();
@@ -181,7 +181,7 @@ public class ContenedorDAO implements Crud {
                     + "where b.id_bod=m.id_bod_mae "
                     + "and p.id_pro=m.id_pro_mae "
                     + "and c.id_ciu=b.id_ciu_bod "
-                    + "and c.nom_ciu='" + ciudad + "' "
+                    + "and c.nom_ciu like '%" + ciudad + "%' "
                     + "and nom_pro like '%" + producto + "%'";
         }
 
@@ -201,7 +201,7 @@ public class ContenedorDAO implements Crud {
                 c.setStock(rs.getString("stock_mae"));
                 c.setDisp(rs.getString("disp_mae"));
 
-                c.setBodegaID(rs.getString("id_pro"));
+                c.setBodegaID(rs.getString("id_bod"));
                 c.setProductoID(rs.getString("id_pro"));
                 c.setCiudadID(rs.getString("id_ciu"));
 
@@ -246,7 +246,7 @@ public class ContenedorDAO implements Crud {
     public List bodegasCiudad(String ciudad) {
         List<Bodega> datos = new ArrayList<>();
         String sql = "select * from bodega b, ciudad c "
-                + "where c.nom_ciu='" + ciudad + "' "
+                + "where c.nom_ciu like '%" + ciudad + "%' "
                 + "and b.id_ciu_bod=c.id_ciu";
 
         try {

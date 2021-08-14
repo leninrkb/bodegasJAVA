@@ -116,3 +116,25 @@ body{
     border-radius: 6px;
 }
 
+#header center{
+    
+    background-color: #8375f0;
+    color: #6300cc;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+#titulo_usuario center{
+    
+    background-color: #5f99f5;
+    color: black;
+    border-radius: 5px;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
