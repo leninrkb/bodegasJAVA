@@ -20,4 +20,7 @@ public interface Crud {
     public List getDatosXCiudad(String ciudad, String producto);//retorna los datos del maestro segun la ciudad
     public Boolean verificarCompra(String productoID, String bodegaID, Integer cantidad);//verifica que exista suficiente stock
     public List bodegasCiudad(String ciudad); //recupera las bodegas que existen en una ciudad
+    public String addproducto(String id, String nombre, String precio);  //Permite ingresar los productos
+    public String editproducto(String id, String nombre, String precio); //Permite editar los productos 
+    public Producto eliminarproducto(String id);//Permite eliminar los productos
 }
