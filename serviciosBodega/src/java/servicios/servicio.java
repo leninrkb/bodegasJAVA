@@ -137,4 +137,13 @@ public class servicio {
       return ed.getCiudades();
         
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "ingresarProducto")
+    public Boolean ingresarProducto(@WebParam(name = "bodegaID") String bodegaID, @WebParam(name = "productoID") String productoID, @WebParam(name = "cantidad") int cantidad) {
+        //TODO write your implementation code here:
+        return ed.ingresarProducto(bodegaID, productoID, cantidad);
+    }
 }

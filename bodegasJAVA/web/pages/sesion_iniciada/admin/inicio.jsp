@@ -1,4 +1,6 @@
 
+<%@page import="servicios.Producto"%>
+<%@page import="servicios.Bodega"%>
 <%@page import="servicios.Ciudad"%>
 <%@page import="servicios.Contenedor"%>
 <%@page import="java.util.List"%>
@@ -91,18 +93,53 @@
                     </tbody>
                 </table>
             </div> 
-            <div id="servicio">           
+            <div id="servicio">       
+                Ingrese un producto a un bodega:<br><br>
                 <form>
+                    Bodega:<br>
                     <select name="bodegaID">                      
-                        <%                           
-                            for (Contenedor c : datos) {
+                        <%
+                            List<Bodega> bodegas = s.bodegasCiudad("");
+                            for (Bodega b : bodegas) {
                         %>
-                        <option><%=c.getBodega()%></option>                        
+                        <option value="<%=b.getBodegaID()%>"><%= b.getBodega()%></option>                        
                         <%
                             }
                         %>
-                    </select>
-                </form>
+                    </select><br><br>
+                    Producto:<br>
+                    <select name="productoID">                      
+                        <%
+                            List<Producto> pro = s.getProductos();
+                            for (Producto p : pro) {
+                        %>
+                        <option value="<%=p.getId()%>"><%=p.getId()%> - <%=p.getNombre()%></option>                        
+                        <%
+                            }
+                        %>
+                    </select><br><br>
+                    Stock:<br>
+                    <input type="number" name="cantidad" required="" min="0"><br><br>
+                    <input type="submit" name="accion" value="agregar"><br>                    
+                </form><br>
+                <%
+                    String accion = request.getParameter("accion");
+                    if (accion.equals("agregar")) {
+                        String bodegaID = request.getParameter("bodegaID");
+                        String productoID = request.getParameter("productoID");
+                        Integer cantidad = Integer.parseInt(request.getParameter("cantidad"));
+
+                        if (s.ingresarProducto(bodegaID, productoID, cantidad)) {
+                %>                
+                <div id="bien">
+                    <section>
+                        <jsp:include page="../../../include/puedeComprar.jsp" flush="true" />
+                    </section>
+                </div>
+                <%
+                        }
+                    }
+                %>
             </div>
         </div>
 

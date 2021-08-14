@@ -88,6 +88,12 @@
 <message name="getCiudadesResponse">
 <part name="parameters" element="tns:getCiudadesResponse"/>
 </message>
+<message name="ingresarProducto">
+<part name="parameters" element="tns:ingresarProducto"/>
+</message>
+<message name="ingresarProductoResponse">
+<part name="parameters" element="tns:ingresarProductoResponse"/>
+</message>
 <portType name="servicio">
 <operation name="login">
 <input wsam:Action="http://servicios/servicio/loginRequest" message="tns:login"/>
@@ -144,6 +150,10 @@
 <operation name="getCiudades">
 <input wsam:Action="http://servicios/servicio/getCiudadesRequest" message="tns:getCiudades"/>
 <output wsam:Action="http://servicios/servicio/getCiudadesResponse" message="tns:getCiudadesResponse"/>
+</operation>
+<operation name="ingresarProducto">
+<input wsam:Action="http://servicios/servicio/ingresarProductoRequest" message="tns:ingresarProducto"/>
+<output wsam:Action="http://servicios/servicio/ingresarProductoResponse" message="tns:ingresarProductoResponse"/>
 </operation>
 </portType>
 <binding name="servicioPortBinding" type="tns:servicio">
@@ -266,6 +276,15 @@
 </output>
 </operation>
 <operation name="getCiudades">
+<soap:operation soapAction=""/>
+<input>
+<soap:body use="literal"/>
+</input>
+<output>
+<soap:body use="literal"/>
+</output>
+</operation>
+<operation name="ingresarProducto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

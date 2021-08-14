@@ -38,4 +38,6 @@ public interface Crud {
     public Producto eliminarproducto(String id);//Permite eliminar los productos
     
     public List getCiudades();//retorna todas ciudades existentes
+    
+    public Boolean ingresarProducto(String bodegaID, String productoID, Integer cantidad);//ingresa un producto al maestro
 }

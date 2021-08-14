@@ -245,7 +245,7 @@ public class ContenedorDAO implements Crud {
     }
 
     
-    //retorna las bodegas de una ciudad x
+    //retorna las bodegas de una ciudad x, si no hay ciudad retorna todo
     @Override
     public List bodegasCiudad(String ciudad) {
         List<Bodega> datos = new ArrayList<>();
@@ -433,6 +433,28 @@ public class ContenedorDAO implements Crud {
         } catch (Exception e) {
         }
         return null;
+    }
+
+    @Override
+    public Boolean ingresarProducto(String bodegaID, String productoID, Integer cantidad) {
+        String sql = "insert into maestrobodega(id_bod_mae, id_pro_mae, stock_mae, disp_mae) "
+                + "values(?,?,?,?)";
+        
+        try {
+            conn = con.getConexion();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, bodegaID);
+            ps.setString(2, productoID);
+            ps.setInt(3, cantidad);
+            ps.setString(4, "s");
+            res = ps.executeUpdate();
+            
+            if (res == 1) {
+                return true;
+            }
+        } catch (Exception e) {
+        }
+       return false;
     }
 
 }

@@ -44,6 +44,10 @@
 
 <xs:element name="helloResponse" type="tns:helloResponse"/>
 
+<xs:element name="ingresarProducto" type="tns:ingresarProducto"/>
+
+<xs:element name="ingresarProductoResponse" type="tns:ingresarProductoResponse"/>
+
 <xs:element name="login" type="tns:login"/>
 
 <xs:element name="loginResponse" type="tns:loginResponse"/>
@@ -223,6 +227,20 @@
 <xs:complexType name="ciudadUsuarioResponse">
 <xs:sequence>
 <xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ingresarProducto">
+<xs:sequence>
+<xs:element name="bodegaID" type="xs:string" minOccurs="0"/>
+<xs:element name="productoID" type="xs:string" minOccurs="0"/>
+<xs:element name="cantidad" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="ingresarProductoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
 </xs:sequence>
 </xs:complexType>
 

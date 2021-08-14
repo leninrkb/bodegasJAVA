@@ -90,6 +90,12 @@ public class Servicios {
         return port.getCiudades();
     }
 
+    public Boolean ingresarProducto(java.lang.String bodegaID, java.lang.String productoID, int cantidad) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.ingresarProducto(bodegaID, productoID, cantidad);
+    }
+
     
     
     
