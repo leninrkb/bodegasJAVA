@@ -30,12 +30,6 @@ public class Servicios {
         return port.tipoUsuario(usuario);
     }
 
-    public  java.util.List<servicios.Producto> getProductos() {
-        servicios.Servicio_Service service = new servicios.Servicio_Service();
-        servicios.Servicio port = service.getServicioPort();
-        return port.getProductos();
-    }
-
     public String ciudadUsuario(java.lang.String usuario) {
         servicios.Servicio_Service service = new servicios.Servicio_Service();
         servicios.Servicio port = service.getServicioPort();
@@ -60,23 +54,7 @@ public class Servicios {
         return port.verificarCompra(productoID, bodegaID, cantidad);
     }
     
-    public static String addproducto(java.lang.String id, java.lang.String nombre, java.lang.String precio) {
-        servicios.Servicio_Service service = new servicios.Servicio_Service();
-        servicios.Servicio port = service.getServicioPort();
-        return port.addproducto(id, nombre, precio);
-    }
 
-    public static String editproducto(java.lang.String id, java.lang.String nombre, java.lang.String precio) {
-        servicios.Servicio_Service service = new servicios.Servicio_Service();
-        servicios.Servicio port = service.getServicioPort();
-        return port.editproducto(id, nombre, precio);
-    }
-
-    public Producto eliminarproducto(java.lang.String id) {
-        servicios.Servicio_Service service = new servicios.Servicio_Service();
-        servicios.Servicio port = service.getServicioPort();
-        return port.eliminarproducto(id);
-    }
 
     public Boolean comprar(java.lang.String bodegaID, java.lang.String productoID, java.lang.Integer cantidad) {
         servicios.Servicio_Service service = new servicios.Servicio_Service();
@@ -96,8 +74,22 @@ public class Servicios {
         return port.ingresarProducto(bodegaID, productoID, cantidad);
     }
 
-    
-    
-    
-    
+    public java.util.List<servicios.Producto> getProductos(java.lang.String nombre) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.getProductos(nombre);
+    }
+
+    public Boolean addproducto(java.lang.String nombre, java.lang.Integer precio) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.addproducto(nombre, precio);
+    }
+
+    public Boolean editproducto(java.lang.String id, java.lang.String nombre, java.lang.Integer precio) {
+        servicios.Servicio_Service service = new servicios.Servicio_Service();
+        servicios.Servicio port = service.getServicioPort();
+        return port.editproducto(id, nombre, precio);
+    }
+ 
 }

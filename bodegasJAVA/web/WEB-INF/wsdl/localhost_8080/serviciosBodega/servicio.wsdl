@@ -40,12 +40,6 @@
 <message name="ciudadUsuarioResponse">
 <part name="parameters" element="tns:ciudadUsuarioResponse"/>
 </message>
-<message name="eliminarproducto">
-<part name="parameters" element="tns:eliminarproducto"/>
-</message>
-<message name="eliminarproductoResponse">
-<part name="parameters" element="tns:eliminarproductoResponse"/>
-</message>
 <message name="addproducto">
 <part name="parameters" element="tns:addproducto"/>
 </message>
@@ -118,10 +112,6 @@
 <operation name="ciudadUsuario">
 <input wsam:Action="http://servicios/servicio/ciudadUsuarioRequest" message="tns:ciudadUsuario"/>
 <output wsam:Action="http://servicios/servicio/ciudadUsuarioResponse" message="tns:ciudadUsuarioResponse"/>
-</operation>
-<operation name="eliminarproducto">
-<input wsam:Action="http://servicios/servicio/eliminarproductoRequest" message="tns:eliminarproducto"/>
-<output wsam:Action="http://servicios/servicio/eliminarproductoResponse" message="tns:eliminarproductoResponse"/>
 </operation>
 <operation name="addproducto">
 <input wsam:Action="http://servicios/servicio/addproductoRequest" message="tns:addproducto"/>
@@ -204,15 +194,6 @@
 </output>
 </operation>
 <operation name="ciudadUsuario">
-<soap:operation soapAction=""/>
-<input>
-<soap:body use="literal"/>
-</input>
-<output>
-<soap:body use="literal"/>
-</output>
-</operation>
-<operation name="eliminarproducto">
 <soap:operation soapAction=""/>
 <input>
 <soap:body use="literal"/>

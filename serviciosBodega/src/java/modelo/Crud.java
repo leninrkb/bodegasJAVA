@@ -19,7 +19,7 @@ public interface Crud {
 
     public String tipoUsuario(String usuario); //retorna el tipo de usuario
 
-    public List getProductos();//retorna todos los productos
+    public List getProductos(String nombre);//retorna todos los productos
 
     public String ciudadUsuario(String usuario);//retorna la ciudad del usuario
 
@@ -31,11 +31,9 @@ public interface Crud {
 
     public Boolean comprar(String bodegaID, String productoID, Integer cantidad);//realiza la compra sin verificar, x lo q primero se usa verificarCompra()
 
-    public String addproducto(String id, String nombre, String precio);  //Permite ingresar los productos
+    public Boolean addproducto(String nombre, Integer precio);  //Permite ingresar los productos
 
-    public String editproducto(String id, String nombre, String precio); //Permite editar los productos 
-
-    public Producto eliminarproducto(String id);//Permite eliminar los productos
+    public Boolean editproducto(String id, String nombre, Integer precio); //Permite editar los productos 
     
     public List getCiudades();//retorna todas ciudades existentes
     

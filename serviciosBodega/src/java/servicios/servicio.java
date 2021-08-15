@@ -62,9 +62,9 @@ public class servicio {
      * Web service operation
      */
     @WebMethod(operationName = "getProductos")
-    public List<Producto> getProductos() {
+    public List<Producto> getProductos(@WebParam(name = "nombre") String nombre) {
         //TODO write your implementation code here:
-        return c.getProductos();
+        return c.getProductos(nombre);
     }
 
     /**
@@ -106,30 +106,21 @@ public class servicio {
      * Web service operation
      */
     @WebMethod(operationName = "addproducto")
-    public String addproducto(@WebParam(name = "id") String id, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") String precio) {
-        String datos = ed.addproducto(id, nombre, precio);
-        return datos;
+    public Boolean addproducto(@WebParam(name = "nombre") String nombre, @WebParam(name = "precio") Integer precio) {
+       return ed.addproducto(nombre, precio);
+        
     }
 
     /**
      * Web service operation
      */
     @WebMethod(operationName = "editproducto")
-    public String editproducto(@WebParam(name = "id") String id, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") String precio) {
+    public Boolean editproducto(@WebParam(name = "id") String id, @WebParam(name = "nombre") String nombre, @WebParam(name = "precio") Integer precio) {
         //TODO write your implementation code here:
-        String datos = ed.editproducto(id, nombre, precio);
-        return datos;
+        return  ed.editproducto(id, nombre, precio);
+       
     }
     
-    /**
-     * Web service operation
-     */
-    @WebMethod(operationName = "eliminarproducto")
-    public Producto eliminarproducto(@WebParam(name = "id") String id) {
-        //TODO write your implementation code here:
-        Producto pro = ed.eliminarproducto(id);
-        return pro;
-    }
     
     @WebMethod(operationName = "getCiudades")
     public List<Ciudad> getCiudades() {

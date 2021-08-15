@@ -81,7 +81,6 @@ public class ContenedorDAO implements Crud {
         String sql = "select * from usuario "
                 + "where nom_usu='" + usuario + "' "
                 + "and pass_usu='" + contrasenia + "'";
-
         try {
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
@@ -92,7 +91,6 @@ public class ContenedorDAO implements Crud {
             }
         } catch (Exception e) {
         }
-
         return false;
     }
 
@@ -119,9 +117,14 @@ public class ContenedorDAO implements Crud {
 
     //recuepra todos los productos
     @Override
-    public List getProductos() {
+    public List getProductos(String nombre) {
         List<Producto> datos = new ArrayList<>();
-        String sql = "select * from producto";
+        String sql;
+        if (nombre == null || nombre == "") {
+            sql = "select * from producto";
+        }else{
+            sql = "select * from producto where nom_pro like '%" + nombre + "%'";
+        }
 
         try {
             conn = con.getConexion();
@@ -214,7 +217,6 @@ public class ContenedorDAO implements Crud {
         return datos;
     }
 
-    
     //verifica antes de comprar
     @Override
     public Boolean verificarCompra(String bodegaID, String productoID, Integer cantidad) {
@@ -244,7 +246,6 @@ public class ContenedorDAO implements Crud {
         return false;
     }
 
-    
     //retorna las bodegas de una ciudad x, si no hay ciudad retorna todo
     @Override
     public List bodegasCiudad(String ciudad) {
@@ -276,7 +277,6 @@ public class ContenedorDAO implements Crud {
         return datos;
     }
 
-    
     //verifica y compra, tiene en cuenta el stock y la disponibilidad
     @Override
     public Boolean comprar(String bodegaID, String productoID, Integer cantidad) {
@@ -344,91 +344,67 @@ public class ContenedorDAO implements Crud {
         return false;
     }
 
-    
-    //esta de revisar q funcione al 100%
+    //agrega un producto
     @Override
-    public String addproducto(String id, String nombre, String precio) {
-        String sql = "Insert into producto(id_pro, nom_pro, pre_pro) values(?,?,?)";
+    public Boolean addproducto(String nombre, Integer precio) {
+        String sql = "Insert into producto(nom_pro, pre_pro) values(?,?)";
 
         try {
             conn = con.getConexion();
             ps = (PreparedStatement) conn.prepareStatement(sql);
-            ps.setString(1, id);
-            ps.setString(2, nombre);
-            ps.setString(3, precio);
+            ps.setString(1, nombre);
+            ps.setInt(2, precio);
 
             res = ps.executeUpdate();
 
             if (res == 1) {
-                msj = "Se Ingresó El Producto";
-            } else {
-                msj = "No Se Ingresó El Producto";
+                return true;
             }
         } catch (Exception e) {
         }
-
-        return msj;
+        return false;
     }
 
-    
-    //esta de revisar q funcione al 100%
+    //edita un producto
     @Override
-    public String editproducto(String id, String nombre, String precio) {
+    public Boolean editproducto(String id, String nombre, Integer precio) {
         String sql = "Update producto set nom_pro=?,pre_pro=? where id_pro=" + id;
 
         try {
             conn = con.getConexion();
             ps = (PreparedStatement) conn.prepareStatement(sql);
             ps.setString(1, nombre);
-            ps.setString(2, precio);
+            ps.setInt(2, precio);
             res = ps.executeUpdate();
 
             if (res == 1) {
-                msj = "Se Modificó El Producto";
-            } else {
-                msj = "No Se Modificó El Producto";
+                return true;
             }
         } catch (Exception e) {
         }
 
-        return msj;
-    }
-
-    
-    //esta de revisar q funcione al 100%
-    @Override
-    public Producto eliminarproducto(String id) {
-        String sql = "delete from producto where id_pro=" + id + " ";
-
-        try {
-            conn = con.getConexion();
-            ps = (PreparedStatement) conn.prepareStatement(sql);
-            res = ps.executeUpdate();
-
-        } catch (Exception e) {
-        }
-        return pro;
+        return false;
     }
 
     @Override
     public List getCiudades() {
         List<Ciudad> datos = new ArrayList<>();
         String sql = "select * from ciudad";
-        
+
         try {
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            
-            while (rs.next()) {                
+
+            while (rs.next()) {
                 Ciudad c = new Ciudad();
-                
+
                 c.setId(rs.getString("id_ciu"));
                 c.setCiudad(rs.getString("nom_ciu"));
-                
+
                 datos.add(c);
             }
-            
+
             return datos;
         } catch (Exception e) {
         }
@@ -439,7 +415,7 @@ public class ContenedorDAO implements Crud {
     public Boolean ingresarProducto(String bodegaID, String productoID, Integer cantidad) {
         String sql = "insert into maestrobodega(id_bod_mae, id_pro_mae, stock_mae, disp_mae) "
                 + "values(?,?,?,?)";
-        
+
         try {
             conn = con.getConexion();
             ps = conn.prepareStatement(sql);
@@ -448,13 +424,13 @@ public class ContenedorDAO implements Crud {
             ps.setInt(3, cantidad);
             ps.setString(4, "s");
             res = ps.executeUpdate();
-            
+
             if (res == 1) {
                 return true;
             }
         } catch (Exception e) {
         }
-       return false;
+        return false;
     }
 
 }

@@ -34,8 +34,6 @@ public class Controlador extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     String valor = "";
-    String add = "add.jsp";
-    String edit = "edit.jsp";
     Servicios s = new Servicios();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -49,36 +47,28 @@ public class Controlador extends HttpServlet {
             case "inicio":
                 valor = "pages/inicio.jsp";
                 break;
-
             case "iniciosesion":
                 valor = "pages/iniciosesion.jsp";
                 break;
-
             case "ingresar":
                 String usuario = request.getParameter("usuario");
                 String contrasenia = request.getParameter("contrasenia");
                 session.setAttribute("session_usuario", usuario);
-
                 if (s.login(usuario, contrasenia)) {
                     if (s.tipoUsuario(usuario).equalsIgnoreCase("admin")) {
                         valor = "pages/sesion_iniciada/admin/inicio.jsp";
                     } else if (s.tipoUsuario(usuario).equalsIgnoreCase("cliente")) {
                         valor = "pages/sesion_iniciada/inicio.jsp";
                     }
-
                 }
-
-                break;
-                
+                break;               
             case "cerrarsesion":
                 session.invalidate();
                 valor = "index.jsp";
-                    break;
-                    
+                    break;                   
             case "vamos":
                 valor = "pages/sesion_iniciada/compraExterna.jsp";
-                    break;
-                    
+                    break;                    
             case "inicioCliente":
                 valor = "pages/sesion_iniciada/inicio.jsp";
                     break;
@@ -88,20 +78,9 @@ public class Controlador extends HttpServlet {
             case "adminProductos":
                 valor = "pages/sesion_iniciada/admin/inicioProducto.jsp";
                     break;
-            
-            case "addproducto":
-                valor = add;
-                
-            case "editproducto":
-                 valor = edit;
-                 
-            case "eliminarproducto":
-                valor = add;
-
             default:
                 break;
         }
-
         RequestDispatcher rd = request.getRequestDispatcher(valor);
         rd.forward(request, response);
     }

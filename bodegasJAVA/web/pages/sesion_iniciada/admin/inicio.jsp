@@ -110,7 +110,7 @@
                     Producto:<br>
                     <select name="productoID">                      
                         <%
-                            List<Producto> pro = s.getProductos();
+                            List<Producto> pro = s.getProductos("");
                             for (Producto p : pro) {
                         %>
                         <option value="<%=p.getId()%>"><%=p.getId()%> - <%=p.getNombre()%></option>                        
