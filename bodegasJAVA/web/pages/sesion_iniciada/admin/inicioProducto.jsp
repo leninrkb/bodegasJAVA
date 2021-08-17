@@ -203,19 +203,11 @@
                                                                     Integer precio = Integer.parseInt(request.getParameter("precio"));
                                                                     if (s.editproducto(id, nombre, precio)) {
                                                             %>
-                                                            <div id="bien">
-                                                                <section>
-                                                                    <jsp:include page="../../../include/puedeComprar.jsp" flush="true" />
-                                                                </section>
-                                                            </div>
+                                                            <center class="bg-success  display-4 text-dark"> <jsp:include page="../../../include/puedeComprar.jsp" flush="true" /></center>
                                                             <%
                                                             } else {
                                                             %>
-                                                            <div id="mal">
-                                                                <section>
-                                                                    <jsp:include page="../../../include/mal.jsp" flush="true" />
-                                                                </section>
-                                                            </div>
+                                                            <center  class="bg-danger display-4 text-dark"> <jsp:include page="../../../include/mal.jsp" flush="true" /> </center>
                                                             <%
                                                                     }
                                                                 }
@@ -298,19 +290,11 @@
                                                                         Integer precio = Integer.parseInt(request.getParameter("precioNuevo"));
                                                                         if (s.addproducto(nombre, precio)) {
                                                                 %>
-                                                                <div id="bien">
-                                                                    <section>
-                                                                        <jsp:include page="../../../include/puedeComprar.jsp" flush="true" />
-                                                                    </section>
-                                                                </div>
+                                                                <center class="bg-success  display-4 text-dark"> <jsp:include page="../../../include/puedeComprar.jsp" flush="true" /></center>
                                                                 <%
                                                                 } else {
                                                                 %>
-                                                                <div id="mal">
-                                                                    <section>
-                                                                        <jsp:include page="../../../include/mal.jsp" flush="true" />
-                                                                    </section>
-                                                                </div>
+                                                                <center  class="bg-danger display-4 text-dark"> <jsp:include page="../../../include/mal.jsp" flush="true" /> </center>
                                                                 <%
                                                                         }
                                                                     }

@@ -1,3 +1,3 @@
-<div>
-    stock insuficiente
+<div >
+    <label>Stock Insuficiente</label>
 </div>

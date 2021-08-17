@@ -204,7 +204,7 @@
                                                             %>
                                                             <br>
                                                             <div id="bien">
-                                                                <jsp:include page="../../include/puedeComprar.jsp" flush="true" />
+                                                                <center class="bg-success  display-4 text-dark"> <jsp:include page="../../include/puedeComprar.jsp" flush="true" /></center>
                                                             </div>
 
                                                             <%                }

@@ -1,3 +1,3 @@
-<div>
-    Algo salio mal :(
+<div >
+    <label>Algo Salío Mal</label>
 </div>

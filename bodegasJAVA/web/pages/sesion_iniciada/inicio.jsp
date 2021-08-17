@@ -235,15 +235,15 @@
                                                             %>
                                                             <br>
                                                             <div id="bien">
-                                                                <jsp:include page="../../include/puedeComprar.jsp" flush="true" />
+                                                                <center class="bg-success  display-4 text-dark"> <jsp:include page="../../include/puedeComprar.jsp" flush="true" /></center>
                                                             </div>
 
                                                             <%                }
                                                             } else {
                                                             %>
                                                             <br>
-                                                            <div id="alerta">
-                                                                <jsp:include page="../../include/noPuedeComprar.jsp" flush="true" /><br>
+                                                            <div id="alerta" class="bg-warning text-dark">
+                                                               <center> <jsp:include page="../../include/noPuedeComprar.jsp" flush="true" /><br></center>
                                                                 <form>
                                                                     Puede revisar el mismo producto en otra bodega:
                                                                     <input type="submit" name="accion" value="vamos">

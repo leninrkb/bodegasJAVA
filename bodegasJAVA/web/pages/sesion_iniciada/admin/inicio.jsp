@@ -251,19 +251,11 @@
 
                                                                     if (s.ingresarProducto(bodegaID, productoID, cantidad)) {
                                                             %> 
-                                                            <div id="bien">
-                                                                <section>
-                                                                    <jsp:include page="../../../include/puedeComprar.jsp" flush="true" />
-                                                                </section>
-                                                            </div>
+                                                            <center class="bg-success  display-4 text-dark"> <jsp:include page="../../../include/puedeComprar.jsp" flush="true" /></center>
                                                             <%
                                                             } else {
                                                             %>
-                                                            <div id="mal">
-                                                                <section>
-                                                                    <jsp:include page="../../../include/mal.jsp" flush="true" />
-                                                                </section>
-                                                            </div>
+                                                            <center  class="bg-danger display-4 text-dark"> <jsp:include page="../../../include/mal.jsp" flush="true" /> </center>
                                                             <%
                                                                     }
                                                                 }
